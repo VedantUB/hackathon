@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { formatEther } from "viem";
 import { useScaffoldReadContract, useScaffoldContract } from "~~/hooks/scaffold-eth";
@@ -8,6 +8,8 @@ import { useScaffoldReadContract, useScaffoldContract } from "~~/hooks/scaffold-
 export default function Home() {
   const [campaigns, setCampaigns] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const hasFetchedRef = useRef(false);
+  const lastCampaignIdRef = useRef<number>(0);
 
   const { data: nextCampaignId } = useScaffoldReadContract({
     contractName: "ProofOfImpact",
@@ -25,7 +27,17 @@ export default function Home() {
         return;
       }
 
-      const totalCampaigns = Number(nextCampaignId) - 1;
+      const currentCampaignId = Number(nextCampaignId);
+      
+      // Prevent duplicate fetches
+      if (hasFetchedRef.current && lastCampaignIdRef.current === currentCampaignId) {
+        return;
+      }
+
+      hasFetchedRef.current = true;
+      lastCampaignIdRef.current = currentCampaignId;
+
+      const totalCampaigns = currentCampaignId - 1;
       const campaignPromises = [];
 
       for (let i = 1; i <= totalCampaigns; i++) {
@@ -56,7 +68,9 @@ export default function Home() {
     };
 
     fetchCampaigns();
-  }, [nextCampaignId, contract]);
+    // Only depend on nextCampaignId to prevent re-fetching when contract object changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nextCampaignId]);
 
   const totalRaised = campaigns.reduce((sum, c) => sum + parseFloat(c?.amountRaised || "0"), 0);
   const completedCount = campaigns.filter(c => c?.completed).length;
@@ -76,7 +90,7 @@ export default function Home() {
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       {/* Hero Section */}
       <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <h1 className="text-5xl font-bold mb-4">
           Proof-of-Impact Donations
         </h1>
         <p className="text-xl text-base-content/70 max-w-2xl mx-auto">
@@ -113,9 +127,14 @@ export default function Home() {
       <div className="mb-8">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-3xl font-bold">Browse Campaigns</h2>
-          <Link href="/admin" className="btn btn-primary btn-sm">
-            + Create Campaign
-          </Link>
+          <div className="flex gap-2">
+            <Link href="/oracle" className="btn btn-secondary btn-sm">
+              🔍 Oracle Dashboard
+            </Link>
+            <Link href="/admin" className="btn btn-primary btn-sm">
+              + Create Campaign
+            </Link>
+          </div>
         </div>
         
         {campaigns.length === 0 ? (
