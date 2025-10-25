@@ -75,6 +75,10 @@ export default function Home() {
   const totalRaised = campaigns.reduce((sum, c) => sum + parseFloat(c?.amountRaised || "0"), 0);
   const completedCount = campaigns.filter(c => c?.completed).length;
 
+  // Separate campaigns into active and completed
+  const activeCampaigns = campaigns.filter(c => !c?.completed);
+  const completedCampaigns = campaigns.filter(c => c?.completed);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -126,7 +130,7 @@ export default function Home() {
       {/* Campaigns Grid */}
       <div className="mb-8">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold">Browse Campaigns</h2>
+          <h2 className="text-3xl font-bold">Active Campaigns</h2>
           <div className="flex gap-2">
             <Link href="/oracle" className="btn btn-secondary btn-sm">
               🔍 Oracle Dashboard
@@ -148,14 +152,40 @@ export default function Home() {
               </Link>
             </div>
           </div>
+        ) : activeCampaigns.length === 0 ? (
+          <div className="card bg-base-200 shadow-xl">
+            <div className="card-body text-center py-12">
+              <div className="text-6xl mb-4">🎉</div>
+              <h3 className="text-2xl font-bold mb-2">No active campaigns</h3>
+              <p className="text-base-content/60 mb-4">All campaigns have been completed!</p>
+            </div>
+          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {campaigns.map((campaign) => (
+            {activeCampaigns.map((campaign) => (
               <CampaignCard key={campaign.id} campaign={campaign} />
             ))}
           </div>
         )}
       </div>
+
+      {/* Completed Campaigns Section */}
+      {completedCampaigns.length > 0 && (
+        <div className="mb-8">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-3xl font-bold">✅ Completed Campaigns</h2>
+            <div className="badge badge-success badge-lg">
+              {completedCampaigns.length} Completed
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {completedCampaigns.map((campaign) => (
+              <CampaignCard key={campaign.id} campaign={campaign} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* How It Works */}
       <div className="card bg-primary text-primary-content shadow-xl mt-12">
@@ -230,7 +260,7 @@ function CampaignCard({ campaign }: { campaign: any }) {
 
           <div className="card-actions justify-between items-center mt-auto">
             <div className="text-xs text-base-content/60">
-              Milestone {campaign.nextMilestoneIndex + 1}/{campaign.milestoneCount}
+              Milestone {Math.min(campaign.nextMilestoneIndex + 1, campaign.milestoneCount)}/{campaign.milestoneCount}
             </div>
             <button className="btn btn-primary btn-sm">
               View Details →
