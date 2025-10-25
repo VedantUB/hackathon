@@ -1,6 +1,7 @@
 # Proof-of-Impact Donation Platform 🎯
 
 A blockchain-based transparent donation platform where funds are released to NGOs only after verifiable proof of milestone completion. Built with Scaffold-ETH 2.
+This project tackles the critical issue of transparency in charitable donations. By leveraging blockchain, it creates an immutable record of fund usage, ensuring donations directly correlate with verified, real-world impact. Donors gain unprecedented trust, and NGOs benefit from streamlined accountability.
 
 **🌐 Live Demo**: [https://poi-9szmmxp16-devanopers-projects.vercel.app/](https://poi-9szmmxp16-devanopers-projects.vercel.app/)
 
