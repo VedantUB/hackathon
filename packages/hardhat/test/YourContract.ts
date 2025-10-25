@@ -1,28 +1,66 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
-import { YourContract } from "../typechain-types";
+import { ProofOfImpact } from "../typechain-types";
+import { parseEther } from "ethers";
 
-describe("YourContract", function () {
-  // We define a fixture to reuse the same setup in every test.
+describe("ProofOfImpact", function () {
+  let proofOfImpact: ProofOfImpact;
+  let owner: any;
+  let ngo: any;
+  let donor: any;
+  let oracle: any;
 
-  let yourContract: YourContract;
   before(async () => {
-    const [owner] = await ethers.getSigners();
-    const yourContractFactory = await ethers.getContractFactory("YourContract");
-    yourContract = (await yourContractFactory.deploy(owner.address)) as YourContract;
-    await yourContract.waitForDeployment();
+    [owner, ngo, donor, oracle] = await ethers.getSigners();
+    const proofOfImpactFactory = await ethers.getContractFactory("ProofOfImpact");
+    proofOfImpact = (await proofOfImpactFactory.deploy()) as ProofOfImpact;
+    await proofOfImpact.waitForDeployment();
   });
 
   describe("Deployment", function () {
-    it("Should have the right message on deploy", async function () {
-      expect(await yourContract.greeting()).to.equal("Building Unstoppable Apps!!!");
+    it("Should set the correct owner", async function () {
+      expect(await proofOfImpact.owner()).to.equal(owner.address);
     });
 
-    it("Should allow setting a new message", async function () {
-      const newGreeting = "Learn Scaffold-ETH 2! :)";
+    it("Should start with campaign ID 1", async function () {
+      expect(await proofOfImpact.nextCampaignId()).to.equal(1);
+    });
+  });
 
-      await yourContract.setGreeting(newGreeting);
-      expect(await yourContract.greeting()).to.equal(newGreeting);
+  describe("Campaign Creation", function () {
+    it("Should allow owner to create a campaign", async function () {
+      const title = "Test Campaign";
+      const descriptions = ["Milestone 1", "Milestone 2"];
+      const amounts = [parseEther("1"), parseEther("2")];
+
+      await expect(
+        proofOfImpact.createCampaign(ngo.address, title, descriptions, amounts)
+      ).to.emit(proofOfImpact, "CampaignCreated");
+
+      expect(await proofOfImpact.nextCampaignId()).to.equal(2);
+    });
+  });
+
+  describe("Donations", function () {
+    it("Should accept donations", async function () {
+      const campaignId = 1n;
+      const donationAmount = parseEther("0.5");
+
+      await expect(
+        proofOfImpact.connect(donor).donate(campaignId, { value: donationAmount })
+      ).to.emit(proofOfImpact, "DonationReceived");
+    });
+  });
+
+  describe("Oracle Management", function () {
+    it("Should allow owner to add oracle", async function () {
+      await proofOfImpact.setOracle(oracle.address, true);
+      expect(await proofOfImpact.isOracle(oracle.address)).to.be.true;
+    });
+
+    it("Should allow owner to remove oracle", async function () {
+      await proofOfImpact.setOracle(oracle.address, false);
+      expect(await proofOfImpact.isOracle(oracle.address)).to.be.false;
     });
   });
 });

@@ -1,0 +1,752 @@
+{
+  "address": "0x4AD6c8B857840205E09c35a41bBf4AAb1F94d1f3",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "ngo",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "target",
+          "type": "uint256"
+        }
+      ],
+      "name": "CampaignCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "donor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "DonationReceived",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "donor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ImpactNftMinted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "milestoneIndex",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amountReleased",
+          "type": "uint256"
+        }
+      ],
+      "name": "MilestoneVerifiedAndFundsReleased",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "campaignId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "milestoneIndex",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "proofUri",
+          "type": "string"
+        }
+      ],
+      "name": "ProofSubmitted",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "campaigns",
+      "outputs": [
+        {
+          "internalType": "address payable",
+          "name": "ngoAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "targetAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountRaised",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "fundsReleased",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "nextMilestoneIndex",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "completed",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "impactNftCounter",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "_ngoAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "_title",
+          "type": "string"
+        },
+        {
+          "internalType": "string[]",
+          "name": "_milestoneDescriptions",
+          "type": "string[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "_milestoneAmounts",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "createCampaign",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "donate",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "_recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "emergencyWithdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAllMilestones",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "descriptions",
+          "type": "string[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "requiredAmounts",
+          "type": "uint256[]"
+        },
+        {
+          "internalType": "bool[]",
+          "name": "isProofSubmittedArray",
+          "type": "bool[]"
+        },
+        {
+          "internalType": "bool[]",
+          "name": "isVerifiedArray",
+          "type": "bool[]"
+        },
+        {
+          "internalType": "string[]",
+          "name": "proofUris",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_campaignId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getCampaignInfo",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "ngoAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "targetAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountRaised",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "fundsReleased",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "nextMilestoneIndex",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "completed",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "impactNftCounter",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "milestoneCount",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_milestoneIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "getMilestone",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "requiredAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "isProofSubmitted",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "isVerified",
+          "type": "bool"
+        },
+        {
+          "internalType": "string",
+          "name": "proofUri",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "isOracle",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "nextCampaignId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_oracleAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "_status",
+          "type": "bool"
+        }
+      ],
+      "name": "setOracle",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_proofUri",
+          "type": "string"
+        }
+      ],
+      "name": "submitProof",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_campaignId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_milestoneIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "verifyMilestoneAndRelease",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0x1fad0c4fb679ef61e5b64ccb8b60fa9f420f7400069428a5f5b0fccf895dfe9a",
+  "receipt": {
+    "to": null,
+    "from": "0xF1B7C9173637130b13BC31a4BC4C10bfD017a286",
+    "contractAddress": "0x4AD6c8B857840205E09c35a41bBf4AAb1F94d1f3",
+    "transactionIndex": 28,
+    "gasUsed": "2020907",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xb6a375125c654b3e424010b46b497a56588f2803da7c0750b68d52d3b366f10b",
+    "transactionHash": "0x1fad0c4fb679ef61e5b64ccb8b60fa9f420f7400069428a5f5b0fccf895dfe9a",
+    "logs": [],
+    "blockNumber": 9487807,
+    "cumulativeGasUsed": "5638342",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "b2adc9c1890081367bdf44d3b5078409",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"ngo\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"target\",\"type\":\"uint256\"}],\"name\":\"CampaignCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"donor\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"DonationReceived\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"donor\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ImpactNftMinted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"milestoneIndex\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountReleased\",\"type\":\"uint256\"}],\"name\":\"MilestoneVerifiedAndFundsReleased\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"campaignId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"milestoneIndex\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"proofUri\",\"type\":\"string\"}],\"name\":\"ProofSubmitted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"campaigns\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"ngoAddress\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"targetAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountRaised\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"fundsReleased\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"nextMilestoneIndex\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"completed\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"impactNftCounter\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"_ngoAddress\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_title\",\"type\":\"string\"},{\"internalType\":\"string[]\",\"name\":\"_milestoneDescriptions\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_milestoneAmounts\",\"type\":\"uint256[]\"}],\"name\":\"createCampaign\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_campaignId\",\"type\":\"uint256\"}],\"name\":\"donate\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address payable\",\"name\":\"_recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"emergencyWithdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_campaignId\",\"type\":\"uint256\"}],\"name\":\"getAllMilestones\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"descriptions\",\"type\":\"string[]\"},{\"internalType\":\"uint256[]\",\"name\":\"requiredAmounts\",\"type\":\"uint256[]\"},{\"internalType\":\"bool[]\",\"name\":\"isProofSubmittedArray\",\"type\":\"bool[]\"},{\"internalType\":\"bool[]\",\"name\":\"isVerifiedArray\",\"type\":\"bool[]\"},{\"internalType\":\"string[]\",\"name\":\"proofUris\",\"type\":\"string[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_campaignId\",\"type\":\"uint256\"}],\"name\":\"getCampaignInfo\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"ngoAddress\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"title\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"targetAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amountRaised\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"fundsReleased\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"nextMilestoneIndex\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"completed\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"impactNftCounter\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"milestoneCount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_milestoneIndex\",\"type\":\"uint256\"}],\"name\":\"getMilestone\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"requiredAmount\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isProofSubmitted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isVerified\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"proofUri\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"isOracle\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"nextCampaignId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_oracleAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_status\",\"type\":\"bool\"}],\"name\":\"setOracle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_campaignId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_proofUri\",\"type\":\"string\"}],\"name\":\"submitProof\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_campaignId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_milestoneIndex\",\"type\":\"uint256\"}],\"name\":\"verifyMilestoneAndRelease\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"details\":\"A smart contract that holds donations in escrow and releases funds to an NGO based on verifiable proof of milestone completion by a designated Oracle. Donors receive a conceptual \\\"Proof-of-Impact\\\" NFT (tracked by a simple counter).\",\"kind\":\"dev\",\"methods\":{\"getAllMilestones(uint256)\":{\"details\":\"Get all milestones for a campaign\"},\"getCampaignInfo(uint256)\":{\"details\":\"Get campaign details (without milestones array which can't be returned directly)\"},\"getMilestone(uint256,uint256)\":{\"details\":\"Get a specific milestone's details\"}},\"title\":\"ProofOfImpact\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/ProofOfImpact.sol\":\"ProofOfImpact\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/ProofOfImpact.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.0;\\r\\n\\r\\n/**\\r\\n * @title ProofOfImpact\\r\\n * @dev A smart contract that holds donations in escrow and releases funds to an NGO\\r\\n * based on verifiable proof of milestone completion by a designated Oracle.\\r\\n * Donors receive a conceptual \\\"Proof-of-Impact\\\" NFT (tracked by a simple counter).\\r\\n */\\r\\ncontract ProofOfImpact {\\r\\n\\r\\n    // --- STATE VARIABLES ---\\r\\n\\r\\n    address public owner;\\r\\n    uint256 public nextCampaignId = 1;\\r\\n    mapping(address => bool) public isOracle;\\r\\n\\r\\n    struct Milestone {\\r\\n        string description;\\r\\n        uint256 requiredAmount;\\r\\n        bool isProofSubmitted;\\r\\n        bool isVerified;\\r\\n        string proofUri;\\r\\n    }\\r\\n\\r\\n    struct Campaign {\\r\\n        address payable ngoAddress;\\r\\n        string title;\\r\\n        uint256 targetAmount;\\r\\n        uint256 amountRaised;\\r\\n        uint256 fundsReleased;\\r\\n        Milestone[] milestones;\\r\\n        uint256 nextMilestoneIndex;\\r\\n        bool completed;\\r\\n        uint256 impactNftCounter;\\r\\n    }\\r\\n\\r\\n    mapping(uint256 => Campaign) public campaigns;\\r\\n\\r\\n    // --- EVENTS ---\\r\\n\\r\\n    event CampaignCreated(uint256 campaignId, address indexed ngo, uint256 target);\\r\\n    event DonationReceived(uint256 campaignId, address indexed donor, uint256 amount);\\r\\n    event ProofSubmitted(uint256 campaignId, uint256 milestoneIndex, string proofUri);\\r\\n    event MilestoneVerifiedAndFundsReleased(uint256 campaignId, uint256 milestoneIndex, uint256 amountReleased);\\r\\n    event ImpactNftMinted(uint256 campaignId, address indexed donor, uint256 tokenId);\\r\\n\\r\\n    // --- MODIFIERS ---\\r\\n\\r\\n    modifier onlyOwner() {\\r\\n        require(msg.sender == owner, \\\"Only the platform owner can call this function.\\\");\\r\\n        _;\\r\\n    }\\r\\n\\r\\n    modifier onlyOracle() {\\r\\n        require(isOracle[msg.sender], \\\"Only a designated Oracle can call this function.\\\");\\r\\n        _;\\r\\n    }\\r\\n\\r\\n    modifier onlyNGO(uint256 _campaignId) {\\r\\n        require(campaigns[_campaignId].ngoAddress == msg.sender, \\\"Only the campaign's NGO can call this function.\\\");\\r\\n        _;\\r\\n    }\\r\\n\\r\\n    // --- CONSTRUCTOR & RECEIVE FALLBACK ---\\r\\n\\r\\n    constructor() {\\r\\n        owner = msg.sender;\\r\\n        isOracle[msg.sender] = true;\\r\\n    }\\r\\n    \\r\\n    receive() external payable {\\r\\n        revert(\\\"Use the 'donate' function to contribute to a campaign.\\\");\\r\\n    }\\r\\n\\r\\n    // --- ORACLE MANAGEMENT ---\\r\\n\\r\\n    function setOracle(address _oracleAddress, bool _status) public onlyOwner {\\r\\n        isOracle[_oracleAddress] = _status;\\r\\n    }\\r\\n\\r\\n    // --- CAMPAIGN MANAGEMENT ---\\r\\n\\r\\n    function createCampaign(\\r\\n        address payable _ngoAddress,\\r\\n        string memory _title,\\r\\n        string[] memory _milestoneDescriptions,\\r\\n        uint256[] memory _milestoneAmounts\\r\\n    ) public onlyOwner returns (uint256) {\\r\\n        require(_milestoneDescriptions.length == _milestoneAmounts.length, \\\"Milestone arrays must be same length.\\\");\\r\\n        require(_milestoneDescriptions.length > 0, \\\"Campaign must have at least one milestone.\\\");\\r\\n\\r\\n        uint256 totalTarget = 0;\\r\\n        Milestone[] memory newMilestones = new Milestone[](_milestoneDescriptions.length);\\r\\n        \\r\\n        for (uint i = 0; i < _milestoneDescriptions.length; i++) {\\r\\n            require(_milestoneAmounts[i] > 0, \\\"Milestone amount must be greater than zero.\\\");\\r\\n            newMilestones[i] = Milestone({\\r\\n                description: _milestoneDescriptions[i],\\r\\n                requiredAmount: _milestoneAmounts[i],\\r\\n                isProofSubmitted: false,\\r\\n                isVerified: false,\\r\\n                proofUri: \\\"\\\"\\r\\n            });\\r\\n            totalTarget += _milestoneAmounts[i];\\r\\n        }\\r\\n\\r\\n        uint256 newCampaignId = nextCampaignId;\\r\\n        Campaign storage campaign = campaigns[newCampaignId];\\r\\n\\r\\n        campaign.ngoAddress = _ngoAddress;\\r\\n        campaign.title = _title;\\r\\n        campaign.targetAmount = totalTarget;\\r\\n        campaign.amountRaised = 0;\\r\\n        campaign.fundsReleased = 0;\\r\\n        campaign.nextMilestoneIndex = 0;\\r\\n        campaign.completed = false;\\r\\n        campaign.impactNftCounter = 0;\\r\\n\\r\\n        for (uint i = 0; i < newMilestones.length; i++) {\\r\\n            campaign.milestones.push(newMilestones[i]);\\r\\n        }\\r\\n\\r\\n        emit CampaignCreated(newCampaignId, _ngoAddress, totalTarget);\\r\\n        nextCampaignId++;\\r\\n        return newCampaignId;\\r\\n    }\\r\\n\\r\\n    // --- DONATION LOGIC ---\\r\\n\\r\\n    function donate(uint256 _campaignId) public payable {\\r\\n        Campaign storage campaign = campaigns[_campaignId];\\r\\n        require(campaign.ngoAddress != address(0), \\\"Campaign does not exist.\\\");\\r\\n        require(msg.value > 0, \\\"Donation amount must be greater than zero.\\\");\\r\\n        require(!campaign.completed, \\\"Campaign is already completed.\\\");\\r\\n\\r\\n        campaign.amountRaised += msg.value;\\r\\n        campaign.impactNftCounter++;\\r\\n        \\r\\n        emit ImpactNftMinted(_campaignId, msg.sender, campaign.impactNftCounter);\\r\\n        emit DonationReceived(_campaignId, msg.sender, msg.value);\\r\\n    }\\r\\n\\r\\n    // --- PROOF & VERIFICATION LOGIC ---\\r\\n\\r\\n    function submitProof(uint256 _campaignId, string memory _proofUri) public onlyNGO(_campaignId) {\\r\\n        Campaign storage campaign = campaigns[_campaignId];\\r\\n        uint256 index = campaign.nextMilestoneIndex;\\r\\n\\r\\n        require(!campaign.completed, \\\"Campaign is already completed.\\\");\\r\\n        require(index < campaign.milestones.length, \\\"No next milestone to submit proof for.\\\");\\r\\n        require(campaign.milestones[index].requiredAmount <= campaign.amountRaised - campaign.fundsReleased, \\\"Not enough funds in escrow for this milestone.\\\");\\r\\n        require(!campaign.milestones[index].isProofSubmitted, \\\"Proof for this milestone already submitted.\\\");\\r\\n\\r\\n        campaign.milestones[index].isProofSubmitted = true;\\r\\n        campaign.milestones[index].proofUri = _proofUri;\\r\\n\\r\\n        emit ProofSubmitted(_campaignId, index, _proofUri);\\r\\n    }\\r\\n\\r\\n    function verifyMilestoneAndRelease(uint256 _campaignId, uint256 _milestoneIndex) public onlyOracle {\\r\\n        Campaign storage campaign = campaigns[_campaignId];\\r\\n        Milestone storage milestone = campaign.milestones[_milestoneIndex];\\r\\n\\r\\n        require(campaign.ngoAddress != address(0), \\\"Campaign does not exist.\\\");\\r\\n        require(!milestone.isVerified, \\\"Milestone is already verified.\\\");\\r\\n        require(milestone.isProofSubmitted, \\\"Proof must be submitted before verification.\\\");\\r\\n        require(_milestoneIndex == campaign.nextMilestoneIndex, \\\"Verification must be for the next sequential milestone.\\\");\\r\\n\\r\\n        milestone.isVerified = true;\\r\\n        uint256 amountToRelease = milestone.requiredAmount;\\r\\n        campaign.fundsReleased += amountToRelease;\\r\\n\\r\\n        (bool success, ) = campaign.ngoAddress.call{value: amountToRelease}(\\\"\\\");\\r\\n        require(success, \\\"Fund transfer failed to NGO.\\\");\\r\\n\\r\\n        campaign.nextMilestoneIndex++;\\r\\n\\r\\n        if (campaign.nextMilestoneIndex == campaign.milestones.length) {\\r\\n            campaign.completed = true;\\r\\n            uint256 remainingFunds = address(this).balance - (campaign.amountRaised - campaign.fundsReleased);\\r\\n            if (remainingFunds > 0) {\\r\\n                 (success, ) = campaign.ngoAddress.call{value: remainingFunds}(\\\"\\\");\\r\\n                 require(success, \\\"Remaining fund transfer failed.\\\");\\r\\n                 campaign.fundsReleased += remainingFunds;\\r\\n            }\\r\\n        }\\r\\n\\r\\n        emit MilestoneVerifiedAndFundsReleased(_campaignId, _milestoneIndex, amountToRelease);\\r\\n    }\\r\\n\\r\\n    function emergencyWithdraw(address payable _recipient, uint256 _amount) public onlyOwner {\\r\\n        require(_amount <= address(this).balance, \\\"Insufficient balance.\\\");\\r\\n        (bool success, ) = _recipient.call{value: _amount}(\\\"\\\");\\r\\n        require(success, \\\"Withdrawal failed.\\\");\\r\\n    }\\r\\n\\r\\n    // --- VIEW FUNCTIONS FOR FRONTEND ---\\r\\n\\r\\n    /**\\r\\n     * @dev Get campaign details (without milestones array which can't be returned directly)\\r\\n     */\\r\\n    function getCampaignInfo(uint256 _campaignId) public view returns (\\r\\n        address ngoAddress,\\r\\n        string memory title,\\r\\n        uint256 targetAmount,\\r\\n        uint256 amountRaised,\\r\\n        uint256 fundsReleased,\\r\\n        uint256 nextMilestoneIndex,\\r\\n        bool completed,\\r\\n        uint256 impactNftCounter,\\r\\n        uint256 milestoneCount\\r\\n    ) {\\r\\n        Campaign storage c = campaigns[_campaignId];\\r\\n        return (\\r\\n            c.ngoAddress,\\r\\n            c.title,\\r\\n            c.targetAmount,\\r\\n            c.amountRaised,\\r\\n            c.fundsReleased,\\r\\n            c.nextMilestoneIndex,\\r\\n            c.completed,\\r\\n            c.impactNftCounter,\\r\\n            c.milestones.length\\r\\n        );\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Get a specific milestone's details\\r\\n     */\\r\\n    function getMilestone(uint256 _campaignId, uint256 _milestoneIndex) public view returns (\\r\\n        string memory description,\\r\\n        uint256 requiredAmount,\\r\\n        bool isProofSubmitted,\\r\\n        bool isVerified,\\r\\n        string memory proofUri\\r\\n    ) {\\r\\n        require(_milestoneIndex < campaigns[_campaignId].milestones.length, \\\"Milestone index out of bounds.\\\");\\r\\n        Milestone storage m = campaigns[_campaignId].milestones[_milestoneIndex];\\r\\n        return (m.description, m.requiredAmount, m.isProofSubmitted, m.isVerified, m.proofUri);\\r\\n    }\\r\\n\\r\\n    /**\\r\\n     * @dev Get all milestones for a campaign\\r\\n     */\\r\\n    function getAllMilestones(uint256 _campaignId) public view returns (\\r\\n        string[] memory descriptions,\\r\\n        uint256[] memory requiredAmounts,\\r\\n        bool[] memory isProofSubmittedArray,\\r\\n        bool[] memory isVerifiedArray,\\r\\n        string[] memory proofUris\\r\\n    ) {\\r\\n        Campaign storage campaign = campaigns[_campaignId];\\r\\n        uint256 length = campaign.milestones.length;\\r\\n        \\r\\n        descriptions = new string[](length);\\r\\n        requiredAmounts = new uint256[](length);\\r\\n        isProofSubmittedArray = new bool[](length);\\r\\n        isVerifiedArray = new bool[](length);\\r\\n        proofUris = new string[](length);\\r\\n        \\r\\n        for (uint256 i = 0; i < length; i++) {\\r\\n            Milestone storage m = campaign.milestones[i];\\r\\n            descriptions[i] = m.description;\\r\\n            requiredAmounts[i] = m.requiredAmount;\\r\\n            isProofSubmittedArray[i] = m.isProofSubmitted;\\r\\n            isVerifiedArray[i] = m.isVerified;\\r\\n            proofUris[i] = m.proofUri;\\r\\n        }\\r\\n        \\r\\n        return (descriptions, requiredAmounts, isProofSubmittedArray, isVerifiedArray, proofUris);\\r\\n    }\\r\\n}\",\"keccak256\":\"0x67c0abd253813fc85a42c1bad2581242b410a045bff99fa3b1721642dd1b7bb5\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60806040526001805534801561001457600080fd5b50600080546001600160a01b0319163390811782558152600260205260409020805460ff1916600117905561225e8061004e6000396000f3fe6080604052600436106100c65760003560e01c80638da5cb5b1161007f578063a0b2389b11610059578063a0b2389b146102a8578063a97e5c93146102d9578063e38e2b8214610319578063f14faf6f1461034e57600080fd5b80638da5cb5b1461021f5780638ed9895c1461025757806395ccea671461028857600080fd5b8063141961bc1461013c5780632af00510146101795780634a82a3131461019b57806365360843146101c95780637903a756146101e957806379f27c25146101ff57600080fd5b366101375760405162461bcd60e51b815260206004820152603660248201527f557365207468652027646f6e617465272066756e6374696f6e20746f20636f6e6044820152753a3934b13aba32903a3790309031b0b6b830b4b3b71760511b60648201526084015b60405180910390fd5b600080fd5b34801561014857600080fd5b5061015c610157366004611a1f565b610361565b604051610170989796959493929190611a7e565b60405180910390f35b34801561018557600080fd5b50610199610194366004611b8f565b61043a565b005b3480156101a757600080fd5b506101bb6101b6366004611c7d565b610766565b604051908152602001610170565b3480156101d557600080fd5b506101996101e4366004611d8a565b610bb1565b3480156101f557600080fd5b506101bb60015481565b34801561020b57600080fd5b5061019961021a366004611dc8565b610c06565b34801561022b57600080fd5b5060005461023f906001600160a01b031681565b6040516001600160a01b039091168152602001610170565b34801561026357600080fd5b50610277610272366004611dc8565b61107f565b604051610170959493929190611dea565b34801561029457600080fd5b506101996102a3366004611e31565b61126b565b3480156102b457600080fd5b506102c86102c3366004611a1f565b61137a565b604051610170959493929190611eec565b3480156102e557600080fd5b506103096102f4366004611f74565b60026020526000908152604090205460ff1681565b6040519015158152602001610170565b34801561032557600080fd5b50610339610334366004611a1f565b611733565b60405161017099989796959493929190611f98565b61019961035c366004611a1f565b611853565b600360205260009081526040902080546001820180546001600160a01b03909216929161038d90611ff8565b80601f01602080910402602001604051908101604052809291908181526020018280546103b990611ff8565b80156104065780601f106103db57610100808354040283529160200191610406565b820191906000526020600020905b8154815290600101906020018083116103e957829003601f168201915b50505060028401546003850154600486015460068701546007880154600890980154969793969295509093509160ff169088565b60008281526003602052604090205482906001600160a01b031633146104ba5760405162461bcd60e51b815260206004820152602f60248201527f4f6e6c79207468652063616d706169676e2773204e474f2063616e2063616c6c60448201526e103a3434b990333ab731ba34b7b71760891b606482015260840161012e565b60008381526003602052604090206006810154600782015460ff16156105225760405162461bcd60e51b815260206004820152601e60248201527f43616d706169676e20697320616c726561647920636f6d706c657465642e0000604482015260640161012e565b600582015481106105845760405162461bcd60e51b815260206004820152602660248201527f4e6f206e657874206d696c6573746f6e6520746f207375626d69742070726f6f60448201526533103337b91760d11b606482015260840161012e565b816004015482600301546105989190612048565b8260050182815481106105ad576105ad612061565b90600052602060002090600402016001015411156106245760405162461bcd60e51b815260206004820152602e60248201527f4e6f7420656e6f7567682066756e647320696e20657363726f7720666f72207460448201526d3434b99036b4b632b9ba37b7329760911b606482015260840161012e565b81600501818154811061063957610639612061565b600091825260209091206002600490920201015460ff16156106b15760405162461bcd60e51b815260206004820152602b60248201527f50726f6f6620666f722074686973206d696c6573746f6e6520616c726561647960448201526a1039bab136b4ba3a32b21760a91b606482015260840161012e565b60018260050182815481106106c8576106c8612061565b906000526020600020906004020160020160006101000a81548160ff0219169083151502179055508382600501828154811061070657610706612061565b9060005260206000209060040201600301908161072391906120c5565b507fa0369f36b2a8975ad69f1e8b8de8b56312cbcfe25149ce1e43f83d5e612f451b85828660405161075793929190612185565b60405180910390a15050505050565b600080546001600160a01b031633146107915760405162461bcd60e51b815260040161012e906121ad565b81518351146107f05760405162461bcd60e51b815260206004820152602560248201527f4d696c6573746f6e6520617272617973206d7573742062652073616d65206c656044820152643733ba341760d91b606482015260840161012e565b60008351116108545760405162461bcd60e51b815260206004820152602a60248201527f43616d706169676e206d7573742068617665206174206c65617374206f6e652060448201526936b4b632b9ba37b7329760b11b606482015260840161012e565b600080845167ffffffffffffffff81111561087157610871611ad8565b6040519080825280602002602001820160405280156108d857816020015b6108c56040518060a001604052806060815260200160008152602001600015158152602001600015158152602001606081525090565b81526020019060019003908161088f5790505b50905060005b8551811015610a285760008582815181106108fb576108fb612061565b6020026020010151116109645760405162461bcd60e51b815260206004820152602b60248201527f4d696c6573746f6e6520616d6f756e74206d757374206265206772656174657260448201526a103a3430b7103d32b9379760a91b606482015260840161012e565b6040518060a0016040528087838151811061098157610981612061565b602002602001015181526020018683815181106109a0576109a0612061565b60200260200101518152602001600015158152602001600015158152602001604051806020016040528060008152508152508282815181106109e4576109e4612061565b6020026020010181905250848181518110610a0157610a01612061565b602002602001015183610a1491906121fc565b925080610a208161220f565b9150506108de565b5060018054600081815260036020526040902080546001600160a01b0319166001600160a01b038b1617815590918101610a6289826120c5565b5060028101849055600060038201819055600482018190556006820181905560078201805460ff19169055600882018190555b8351811015610b4a5781600501848281518110610ab457610ab4612061565b60209081029190910181015182546001810184556000938452919092208251600490920201908190610ae690826120c5565b50602082015160018201556040820151600282018054606085015115156101000261ff00199315159390931661ffff199091161791909117905560808201516003820190610b3490826120c5565b5050508080610b429061220f565b915050610a95565b5060408051838152602081018690526001600160a01b038b16917f63e3678c8493a16f8ba43ae9e547231762ca04526dac2c388bd2c26d89401851910160405180910390a260018054906000610b9f8361220f565b90915550919998505050505050505050565b6000546001600160a01b03163314610bdb5760405162461bcd60e51b815260040161012e906121ad565b6001600160a01b03919091166000908152600260205260409020805460ff1916911515919091179055565b3360009081526002602052604090205460ff16610c7e5760405162461bcd60e51b815260206004820152603060248201527f4f6e6c7920612064657369676e61746564204f7261636c652063616e2063616c60448201526f36103a3434b990333ab731ba34b7b71760811b606482015260840161012e565b600082815260036020526040812060058101805491929184908110610ca557610ca5612061565b60009182526020909120835460049092020191506001600160a01b0316610d095760405162461bcd60e51b815260206004820152601860248201527721b0b6b830b4b3b7103237b2b9903737ba1032bc34b9ba1760411b604482015260640161012e565b6002810154610100900460ff1615610d635760405162461bcd60e51b815260206004820152601e60248201527f4d696c6573746f6e6520697320616c72656164792076657269666965642e0000604482015260640161012e565b600281015460ff16610dcc5760405162461bcd60e51b815260206004820152602c60248201527f50726f6f66206d757374206265207375626d6974746564206265666f7265207660448201526b32b934b334b1b0ba34b7b71760a11b606482015260840161012e565b81600601548314610e455760405162461bcd60e51b815260206004820152603760248201527f566572696669636174696f6e206d75737420626520666f7220746865206e657860448201527f742073657175656e7469616c206d696c6573746f6e652e000000000000000000606482015260840161012e565b60028101805461ff0019166101001790556001810154600483018054829190600090610e729084906121fc565b909155505082546040516000916001600160a01b03169083908381818185875af1925050503d8060008114610ec3576040519150601f19603f3d011682016040523d82523d6000602084013e610ec8565b606091505b5050905080610f195760405162461bcd60e51b815260206004820152601c60248201527f46756e64207472616e73666572206661696c656420746f204e474f2e00000000604482015260640161012e565b600684018054906000610f2b8361220f565b909155505060058401546006850154036110365760078401805460ff1916600117905560048401546003850154600091610f6491612048565b610f6e9047612048565b905080156110345784546040516001600160a01b03909116908290600081818185875af1925050503d8060008114610fc2576040519150601f19603f3d011682016040523d82523d6000602084013e610fc7565b606091505b5050809250508161101a5760405162461bcd60e51b815260206004820152601f60248201527f52656d61696e696e672066756e64207472616e73666572206661696c65642e00604482015260640161012e565b8085600401600082825461102e91906121fc565b90915550505b505b60408051878152602081018790529081018390527f5503c0bef3b719dd7d998644f1a2eeb29b82f4400c5288c5f684f8aca49ec4329060600160405180910390a1505050505050565b6000828152600360205260408120600501546060919081908190849086106110e95760405162461bcd60e51b815260206004820152601e60248201527f4d696c6573746f6e6520696e646578206f7574206f6620626f756e64732e0000604482015260640161012e565b600087815260036020526040812060050180548890811061110c5761110c612061565b60009182526020909120600490910201600181015460028201548254929350839260ff80831692610100900416906003850190859061114a90611ff8565b80601f016020809104026020016040519081016040528092919081815260200182805461117690611ff8565b80156111c35780601f10611198576101008083540402835291602001916111c3565b820191906000526020600020905b8154815290600101906020018083116111a657829003601f168201915b505050505094508080546111d690611ff8565b80601f016020809104026020016040519081016040528092919081815260200182805461120290611ff8565b801561124f5780601f106112245761010080835404028352916020019161124f565b820191906000526020600020905b81548152906001019060200180831161123257829003601f168201915b5050505050905095509550955095509550509295509295909350565b6000546001600160a01b031633146112955760405162461bcd60e51b815260040161012e906121ad565b478111156112dd5760405162461bcd60e51b815260206004820152601560248201527424b739bab33334b1b4b2b73a103130b630b731b29760591b604482015260640161012e565b6000826001600160a01b03168260405160006040518083038185875af1925050503d806000811461132a576040519150601f19603f3d011682016040523d82523d6000602084013e61132f565b606091505b50509050806113755760405162461bcd60e51b81526020600482015260126024820152712bb4ba34323930bbb0b6103330b4b632b21760711b604482015260640161012e565b505050565b600081815260036020526040902060058101546060918291829182918291908067ffffffffffffffff8111156113b2576113b2611ad8565b6040519080825280602002602001820160405280156113e557816020015b60608152602001906001900390816113d05790505b5096508067ffffffffffffffff81111561140157611401611ad8565b60405190808252806020026020018201604052801561142a578160200160208202803683370190505b5095508067ffffffffffffffff81111561144657611446611ad8565b60405190808252806020026020018201604052801561146f578160200160208202803683370190505b5094508067ffffffffffffffff81111561148b5761148b611ad8565b6040519080825280602002602001820160405280156114b4578160200160208202803683370190505b5093508067ffffffffffffffff8111156114d0576114d0611ad8565b60405190808252806020026020018201604052801561150357816020015b60608152602001906001900390816114ee5790505b50925060005b8181101561172757600083600501828154811061152857611528612061565b9060005260206000209060040201905080600001805461154790611ff8565b80601f016020809104026020016040519081016040528092919081815260200182805461157390611ff8565b80156115c05780601f10611595576101008083540402835291602001916115c0565b820191906000526020600020905b8154815290600101906020018083116115a357829003601f168201915b50505050508983815181106115d7576115d7612061565b602002602001018190525080600101548883815181106115f9576115f9612061565b60209081029190910101526002810154875160ff9091169088908490811061162357611623612061565b6020026020010190151590811515815250508060020160019054906101000a900460ff1686838151811061165957611659612061565b9115156020928302919091019091015260038101805461167890611ff8565b80601f01602080910402602001604051908101604052809291908181526020018280546116a490611ff8565b80156116f15780601f106116c6576101008083540402835291602001916116f1565b820191906000526020600020905b8154815290600101906020018083116116d457829003601f168201915b505050505085838151811061170857611708612061565b602002602001018190525050808061171f9061220f565b915050611509565b50505091939590929450565b60006060600080600080600080600080600360008c815260200190815260200160002090508060000160009054906101000a90046001600160a01b03168160010182600201548360030154846004015485600601548660070160009054906101000a900460ff16876008015488600501805490508780546117b390611ff8565b80601f01602080910402602001604051908101604052809291908181526020018280546117df90611ff8565b801561182c5780601f106118015761010080835404028352916020019161182c565b820191906000526020600020905b81548152906001019060200180831161180f57829003601f168201915b50505050509750995099509950995099509950995099509950509193959799909294969850565b600081815260036020526040902080546001600160a01b03166118b35760405162461bcd60e51b815260206004820152601860248201527721b0b6b830b4b3b7103237b2b9903737ba1032bc34b9ba1760411b604482015260640161012e565b600034116119165760405162461bcd60e51b815260206004820152602a60248201527f446f6e6174696f6e20616d6f756e74206d7573742062652067726561746572206044820152693a3430b7103d32b9379760b11b606482015260840161012e565b600781015460ff161561196b5760405162461bcd60e51b815260206004820152601e60248201527f43616d706169676e20697320616c726561647920636f6d706c657465642e0000604482015260640161012e565b3481600301600082825461197f91906121fc565b90915550506008810180549060006119968361220f565b9091555050600881015460405133917f325b93e6e0248020a3480f19dd263b22c24b594117a99879d4501afa33f89d9d916119d991868252602082015260400190565b60405180910390a26040805183815234602082015233917f0b5b4c52969ff7329ecf7ee536409fda87812b15a8622bc6e8cdeab3aee14a26910160405180910390a25050565b600060208284031215611a3157600080fd5b5035919050565b6000815180845260005b81811015611a5e57602081850181015186830182015201611a42565b506000602082860101526020601f19601f83011685010191505092915050565b6001600160a01b038916815261010060208201819052600090611aa38382018b611a38565b604084019990995250506060810195909552608085019390935260a0840191909152151560c083015260e09091015292915050565b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff81118282101715611b1757611b17611ad8565b604052919050565b600082601f830112611b3057600080fd5b813567ffffffffffffffff811115611b4a57611b4a611ad8565b611b5d601f8201601f1916602001611aee565b818152846020838601011115611b7257600080fd5b816020850160208301376000918101602001919091529392505050565b60008060408385031215611ba257600080fd5b82359150602083013567ffffffffffffffff811115611bc057600080fd5b611bcc85828601611b1f565b9150509250929050565b6001600160a01b0381168114611beb57600080fd5b50565b600067ffffffffffffffff821115611c0857611c08611ad8565b5060051b60200190565b600082601f830112611c2357600080fd5b81356020611c38611c3383611bee565b611aee565b82815260059290921b84018101918181019086841115611c5757600080fd5b8286015b84811015611c725780358352918301918301611c5b565b509695505050505050565b60008060008060808587031215611c9357600080fd5b8435611c9e81611bd6565b935060208581013567ffffffffffffffff80821115611cbc57600080fd5b611cc889838a01611b1f565b95506040880135915080821115611cde57600080fd5b818801915088601f830112611cf257600080fd5b8135611d00611c3382611bee565b81815260059190911b8301840190848101908b831115611d1f57600080fd5b8585015b83811015611d5757803585811115611d3b5760008081fd5b611d498e89838a0101611b1f565b845250918601918601611d23565b50965050506060880135925080831115611d7057600080fd5b5050611d7e87828801611c12565b91505092959194509250565b60008060408385031215611d9d57600080fd5b8235611da881611bd6565b915060208301358015158114611dbd57600080fd5b809150509250929050565b60008060408385031215611ddb57600080fd5b50508035926020909101359150565b60a081526000611dfd60a0830188611a38565b866020840152851515604084015284151560608401528281036080840152611e258185611a38565b98975050505050505050565b60008060408385031215611e4457600080fd5b8235611e4f81611bd6565b946020939093013593505050565b6000815180845260208085019450848260051b860182860160005b85811015611ea2578383038952611e90838351611a38565b98850198925090840190600101611e78565b5090979650505050505050565b600081518084526020808501945080840160005b83811015611ee1578151151587529582019590820190600101611ec3565b509495945050505050565b60a081526000611eff60a0830188611e5d565b82810360208481019190915287518083528882019282019060005b81811015611f3657845183529383019391830191600101611f1a565b50508481036040860152611f4a8189611eaf565b925050508281036060840152611f608186611eaf565b90508281036080840152611e258185611e5d565b600060208284031215611f8657600080fd5b8135611f9181611bd6565b9392505050565b6001600160a01b038a16815261012060208201819052600090611fbd8382018c611a38565b604084019a909a5250506060810196909652608086019490945260a0850192909252151560c084015260e08301526101009091015292915050565b600181811c9082168061200c57607f821691505b60208210810361202c57634e487b7160e01b600052602260045260246000fd5b50919050565b634e487b7160e01b600052601160045260246000fd5b8181038181111561205b5761205b612032565b92915050565b634e487b7160e01b600052603260045260246000fd5b601f82111561137557600081815260208120601f850160051c8101602086101561209e5750805b601f850160051c820191505b818110156120bd578281556001016120aa565b505050505050565b815167ffffffffffffffff8111156120df576120df611ad8565b6120f3816120ed8454611ff8565b84612077565b602080601f83116001811461212857600084156121105750858301515b600019600386901b1c1916600185901b1785556120bd565b600085815260208120601f198616915b8281101561215757888601518255948401946001909101908401612138565b50858210156121755787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b8381528260208201526060604082015260006121a46060830184611a38565b95945050505050565b6020808252602f908201527f4f6e6c792074686520706c6174666f726d206f776e65722063616e2063616c6c60408201526e103a3434b990333ab731ba34b7b71760891b606082015260800190565b8082018082111561205b5761205b612032565b60006001820161222157612221612032565b506001019056fea26469706673582212200937463326bacdf5d3f90698261bee0cbedf9d564792c4fe7fcc66d46023937a64736f6c63430008140033",
+  "deployedBytecode": "0x6080604052600436106100c65760003560e01c80638da5cb5b1161007f578063a0b2389b11610059578063a0b2389b146102a8578063a97e5c93146102d9578063e38e2b8214610319578063f14faf6f1461034e57600080fd5b80638da5cb5b1461021f5780638ed9895c1461025757806395ccea671461028857600080fd5b8063141961bc1461013c5780632af00510146101795780634a82a3131461019b57806365360843146101c95780637903a756146101e957806379f27c25146101ff57600080fd5b366101375760405162461bcd60e51b815260206004820152603660248201527f557365207468652027646f6e617465272066756e6374696f6e20746f20636f6e6044820152753a3934b13aba32903a3790309031b0b6b830b4b3b71760511b60648201526084015b60405180910390fd5b600080fd5b34801561014857600080fd5b5061015c610157366004611a1f565b610361565b604051610170989796959493929190611a7e565b60405180910390f35b34801561018557600080fd5b50610199610194366004611b8f565b61043a565b005b3480156101a757600080fd5b506101bb6101b6366004611c7d565b610766565b604051908152602001610170565b3480156101d557600080fd5b506101996101e4366004611d8a565b610bb1565b3480156101f557600080fd5b506101bb60015481565b34801561020b57600080fd5b5061019961021a366004611dc8565b610c06565b34801561022b57600080fd5b5060005461023f906001600160a01b031681565b6040516001600160a01b039091168152602001610170565b34801561026357600080fd5b50610277610272366004611dc8565b61107f565b604051610170959493929190611dea565b34801561029457600080fd5b506101996102a3366004611e31565b61126b565b3480156102b457600080fd5b506102c86102c3366004611a1f565b61137a565b604051610170959493929190611eec565b3480156102e557600080fd5b506103096102f4366004611f74565b60026020526000908152604090205460ff1681565b6040519015158152602001610170565b34801561032557600080fd5b50610339610334366004611a1f565b611733565b60405161017099989796959493929190611f98565b61019961035c366004611a1f565b611853565b600360205260009081526040902080546001820180546001600160a01b03909216929161038d90611ff8565b80601f01602080910402602001604051908101604052809291908181526020018280546103b990611ff8565b80156104065780601f106103db57610100808354040283529160200191610406565b820191906000526020600020905b8154815290600101906020018083116103e957829003601f168201915b50505060028401546003850154600486015460068701546007880154600890980154969793969295509093509160ff169088565b60008281526003602052604090205482906001600160a01b031633146104ba5760405162461bcd60e51b815260206004820152602f60248201527f4f6e6c79207468652063616d706169676e2773204e474f2063616e2063616c6c60448201526e103a3434b990333ab731ba34b7b71760891b606482015260840161012e565b60008381526003602052604090206006810154600782015460ff16156105225760405162461bcd60e51b815260206004820152601e60248201527f43616d706169676e20697320616c726561647920636f6d706c657465642e0000604482015260640161012e565b600582015481106105845760405162461bcd60e51b815260206004820152602660248201527f4e6f206e657874206d696c6573746f6e6520746f207375626d69742070726f6f60448201526533103337b91760d11b606482015260840161012e565b816004015482600301546105989190612048565b8260050182815481106105ad576105ad612061565b90600052602060002090600402016001015411156106245760405162461bcd60e51b815260206004820152602e60248201527f4e6f7420656e6f7567682066756e647320696e20657363726f7720666f72207460448201526d3434b99036b4b632b9ba37b7329760911b606482015260840161012e565b81600501818154811061063957610639612061565b600091825260209091206002600490920201015460ff16156106b15760405162461bcd60e51b815260206004820152602b60248201527f50726f6f6620666f722074686973206d696c6573746f6e6520616c726561647960448201526a1039bab136b4ba3a32b21760a91b606482015260840161012e565b60018260050182815481106106c8576106c8612061565b906000526020600020906004020160020160006101000a81548160ff0219169083151502179055508382600501828154811061070657610706612061565b9060005260206000209060040201600301908161072391906120c5565b507fa0369f36b2a8975ad69f1e8b8de8b56312cbcfe25149ce1e43f83d5e612f451b85828660405161075793929190612185565b60405180910390a15050505050565b600080546001600160a01b031633146107915760405162461bcd60e51b815260040161012e906121ad565b81518351146107f05760405162461bcd60e51b815260206004820152602560248201527f4d696c6573746f6e6520617272617973206d7573742062652073616d65206c656044820152643733ba341760d91b606482015260840161012e565b60008351116108545760405162461bcd60e51b815260206004820152602a60248201527f43616d706169676e206d7573742068617665206174206c65617374206f6e652060448201526936b4b632b9ba37b7329760b11b606482015260840161012e565b600080845167ffffffffffffffff81111561087157610871611ad8565b6040519080825280602002602001820160405280156108d857816020015b6108c56040518060a001604052806060815260200160008152602001600015158152602001600015158152602001606081525090565b81526020019060019003908161088f5790505b50905060005b8551811015610a285760008582815181106108fb576108fb612061565b6020026020010151116109645760405162461bcd60e51b815260206004820152602b60248201527f4d696c6573746f6e6520616d6f756e74206d757374206265206772656174657260448201526a103a3430b7103d32b9379760a91b606482015260840161012e565b6040518060a0016040528087838151811061098157610981612061565b602002602001015181526020018683815181106109a0576109a0612061565b60200260200101518152602001600015158152602001600015158152602001604051806020016040528060008152508152508282815181106109e4576109e4612061565b6020026020010181905250848181518110610a0157610a01612061565b602002602001015183610a1491906121fc565b925080610a208161220f565b9150506108de565b5060018054600081815260036020526040902080546001600160a01b0319166001600160a01b038b1617815590918101610a6289826120c5565b5060028101849055600060038201819055600482018190556006820181905560078201805460ff19169055600882018190555b8351811015610b4a5781600501848281518110610ab457610ab4612061565b60209081029190910181015182546001810184556000938452919092208251600490920201908190610ae690826120c5565b50602082015160018201556040820151600282018054606085015115156101000261ff00199315159390931661ffff199091161791909117905560808201516003820190610b3490826120c5565b5050508080610b429061220f565b915050610a95565b5060408051838152602081018690526001600160a01b038b16917f63e3678c8493a16f8ba43ae9e547231762ca04526dac2c388bd2c26d89401851910160405180910390a260018054906000610b9f8361220f565b90915550919998505050505050505050565b6000546001600160a01b03163314610bdb5760405162461bcd60e51b815260040161012e906121ad565b6001600160a01b03919091166000908152600260205260409020805460ff1916911515919091179055565b3360009081526002602052604090205460ff16610c7e5760405162461bcd60e51b815260206004820152603060248201527f4f6e6c7920612064657369676e61746564204f7261636c652063616e2063616c60448201526f36103a3434b990333ab731ba34b7b71760811b606482015260840161012e565b600082815260036020526040812060058101805491929184908110610ca557610ca5612061565b60009182526020909120835460049092020191506001600160a01b0316610d095760405162461bcd60e51b815260206004820152601860248201527721b0b6b830b4b3b7103237b2b9903737ba1032bc34b9ba1760411b604482015260640161012e565b6002810154610100900460ff1615610d635760405162461bcd60e51b815260206004820152601e60248201527f4d696c6573746f6e6520697320616c72656164792076657269666965642e0000604482015260640161012e565b600281015460ff16610dcc5760405162461bcd60e51b815260206004820152602c60248201527f50726f6f66206d757374206265207375626d6974746564206265666f7265207660448201526b32b934b334b1b0ba34b7b71760a11b606482015260840161012e565b81600601548314610e455760405162461bcd60e51b815260206004820152603760248201527f566572696669636174696f6e206d75737420626520666f7220746865206e657860448201527f742073657175656e7469616c206d696c6573746f6e652e000000000000000000606482015260840161012e565b60028101805461ff0019166101001790556001810154600483018054829190600090610e729084906121fc565b909155505082546040516000916001600160a01b03169083908381818185875af1925050503d8060008114610ec3576040519150601f19603f3d011682016040523d82523d6000602084013e610ec8565b606091505b5050905080610f195760405162461bcd60e51b815260206004820152601c60248201527f46756e64207472616e73666572206661696c656420746f204e474f2e00000000604482015260640161012e565b600684018054906000610f2b8361220f565b909155505060058401546006850154036110365760078401805460ff1916600117905560048401546003850154600091610f6491612048565b610f6e9047612048565b905080156110345784546040516001600160a01b03909116908290600081818185875af1925050503d8060008114610fc2576040519150601f19603f3d011682016040523d82523d6000602084013e610fc7565b606091505b5050809250508161101a5760405162461bcd60e51b815260206004820152601f60248201527f52656d61696e696e672066756e64207472616e73666572206661696c65642e00604482015260640161012e565b8085600401600082825461102e91906121fc565b90915550505b505b60408051878152602081018790529081018390527f5503c0bef3b719dd7d998644f1a2eeb29b82f4400c5288c5f684f8aca49ec4329060600160405180910390a1505050505050565b6000828152600360205260408120600501546060919081908190849086106110e95760405162461bcd60e51b815260206004820152601e60248201527f4d696c6573746f6e6520696e646578206f7574206f6620626f756e64732e0000604482015260640161012e565b600087815260036020526040812060050180548890811061110c5761110c612061565b60009182526020909120600490910201600181015460028201548254929350839260ff80831692610100900416906003850190859061114a90611ff8565b80601f016020809104026020016040519081016040528092919081815260200182805461117690611ff8565b80156111c35780601f10611198576101008083540402835291602001916111c3565b820191906000526020600020905b8154815290600101906020018083116111a657829003601f168201915b505050505094508080546111d690611ff8565b80601f016020809104026020016040519081016040528092919081815260200182805461120290611ff8565b801561124f5780601f106112245761010080835404028352916020019161124f565b820191906000526020600020905b81548152906001019060200180831161123257829003601f168201915b5050505050905095509550955095509550509295509295909350565b6000546001600160a01b031633146112955760405162461bcd60e51b815260040161012e906121ad565b478111156112dd5760405162461bcd60e51b815260206004820152601560248201527424b739bab33334b1b4b2b73a103130b630b731b29760591b604482015260640161012e565b6000826001600160a01b03168260405160006040518083038185875af1925050503d806000811461132a576040519150601f19603f3d011682016040523d82523d6000602084013e61132f565b606091505b50509050806113755760405162461bcd60e51b81526020600482015260126024820152712bb4ba34323930bbb0b6103330b4b632b21760711b604482015260640161012e565b505050565b600081815260036020526040902060058101546060918291829182918291908067ffffffffffffffff8111156113b2576113b2611ad8565b6040519080825280602002602001820160405280156113e557816020015b60608152602001906001900390816113d05790505b5096508067ffffffffffffffff81111561140157611401611ad8565b60405190808252806020026020018201604052801561142a578160200160208202803683370190505b5095508067ffffffffffffffff81111561144657611446611ad8565b60405190808252806020026020018201604052801561146f578160200160208202803683370190505b5094508067ffffffffffffffff81111561148b5761148b611ad8565b6040519080825280602002602001820160405280156114b4578160200160208202803683370190505b5093508067ffffffffffffffff8111156114d0576114d0611ad8565b60405190808252806020026020018201604052801561150357816020015b60608152602001906001900390816114ee5790505b50925060005b8181101561172757600083600501828154811061152857611528612061565b9060005260206000209060040201905080600001805461154790611ff8565b80601f016020809104026020016040519081016040528092919081815260200182805461157390611ff8565b80156115c05780601f10611595576101008083540402835291602001916115c0565b820191906000526020600020905b8154815290600101906020018083116115a357829003601f168201915b50505050508983815181106115d7576115d7612061565b602002602001018190525080600101548883815181106115f9576115f9612061565b60209081029190910101526002810154875160ff9091169088908490811061162357611623612061565b6020026020010190151590811515815250508060020160019054906101000a900460ff1686838151811061165957611659612061565b9115156020928302919091019091015260038101805461167890611ff8565b80601f01602080910402602001604051908101604052809291908181526020018280546116a490611ff8565b80156116f15780601f106116c6576101008083540402835291602001916116f1565b820191906000526020600020905b8154815290600101906020018083116116d457829003601f168201915b505050505085838151811061170857611708612061565b602002602001018190525050808061171f9061220f565b915050611509565b50505091939590929450565b60006060600080600080600080600080600360008c815260200190815260200160002090508060000160009054906101000a90046001600160a01b03168160010182600201548360030154846004015485600601548660070160009054906101000a900460ff16876008015488600501805490508780546117b390611ff8565b80601f01602080910402602001604051908101604052809291908181526020018280546117df90611ff8565b801561182c5780601f106118015761010080835404028352916020019161182c565b820191906000526020600020905b81548152906001019060200180831161180f57829003601f168201915b50505050509750995099509950995099509950995099509950509193959799909294969850565b600081815260036020526040902080546001600160a01b03166118b35760405162461bcd60e51b815260206004820152601860248201527721b0b6b830b4b3b7103237b2b9903737ba1032bc34b9ba1760411b604482015260640161012e565b600034116119165760405162461bcd60e51b815260206004820152602a60248201527f446f6e6174696f6e20616d6f756e74206d7573742062652067726561746572206044820152693a3430b7103d32b9379760b11b606482015260840161012e565b600781015460ff161561196b5760405162461bcd60e51b815260206004820152601e60248201527f43616d706169676e20697320616c726561647920636f6d706c657465642e0000604482015260640161012e565b3481600301600082825461197f91906121fc565b90915550506008810180549060006119968361220f565b9091555050600881015460405133917f325b93e6e0248020a3480f19dd263b22c24b594117a99879d4501afa33f89d9d916119d991868252602082015260400190565b60405180910390a26040805183815234602082015233917f0b5b4c52969ff7329ecf7ee536409fda87812b15a8622bc6e8cdeab3aee14a26910160405180910390a25050565b600060208284031215611a3157600080fd5b5035919050565b6000815180845260005b81811015611a5e57602081850181015186830182015201611a42565b506000602082860101526020601f19601f83011685010191505092915050565b6001600160a01b038916815261010060208201819052600090611aa38382018b611a38565b604084019990995250506060810195909552608085019390935260a0840191909152151560c083015260e09091015292915050565b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff81118282101715611b1757611b17611ad8565b604052919050565b600082601f830112611b3057600080fd5b813567ffffffffffffffff811115611b4a57611b4a611ad8565b611b5d601f8201601f1916602001611aee565b818152846020838601011115611b7257600080fd5b816020850160208301376000918101602001919091529392505050565b60008060408385031215611ba257600080fd5b82359150602083013567ffffffffffffffff811115611bc057600080fd5b611bcc85828601611b1f565b9150509250929050565b6001600160a01b0381168114611beb57600080fd5b50565b600067ffffffffffffffff821115611c0857611c08611ad8565b5060051b60200190565b600082601f830112611c2357600080fd5b81356020611c38611c3383611bee565b611aee565b82815260059290921b84018101918181019086841115611c5757600080fd5b8286015b84811015611c725780358352918301918301611c5b565b509695505050505050565b60008060008060808587031215611c9357600080fd5b8435611c9e81611bd6565b935060208581013567ffffffffffffffff80821115611cbc57600080fd5b611cc889838a01611b1f565b95506040880135915080821115611cde57600080fd5b818801915088601f830112611cf257600080fd5b8135611d00611c3382611bee565b81815260059190911b8301840190848101908b831115611d1f57600080fd5b8585015b83811015611d5757803585811115611d3b5760008081fd5b611d498e89838a0101611b1f565b845250918601918601611d23565b50965050506060880135925080831115611d7057600080fd5b5050611d7e87828801611c12565b91505092959194509250565b60008060408385031215611d9d57600080fd5b8235611da881611bd6565b915060208301358015158114611dbd57600080fd5b809150509250929050565b60008060408385031215611ddb57600080fd5b50508035926020909101359150565b60a081526000611dfd60a0830188611a38565b866020840152851515604084015284151560608401528281036080840152611e258185611a38565b98975050505050505050565b60008060408385031215611e4457600080fd5b8235611e4f81611bd6565b946020939093013593505050565b6000815180845260208085019450848260051b860182860160005b85811015611ea2578383038952611e90838351611a38565b98850198925090840190600101611e78565b5090979650505050505050565b600081518084526020808501945080840160005b83811015611ee1578151151587529582019590820190600101611ec3565b509495945050505050565b60a081526000611eff60a0830188611e5d565b82810360208481019190915287518083528882019282019060005b81811015611f3657845183529383019391830191600101611f1a565b50508481036040860152611f4a8189611eaf565b925050508281036060840152611f608186611eaf565b90508281036080840152611e258185611e5d565b600060208284031215611f8657600080fd5b8135611f9181611bd6565b9392505050565b6001600160a01b038a16815261012060208201819052600090611fbd8382018c611a38565b604084019a909a5250506060810196909652608086019490945260a0850192909252151560c084015260e08301526101009091015292915050565b600181811c9082168061200c57607f821691505b60208210810361202c57634e487b7160e01b600052602260045260246000fd5b50919050565b634e487b7160e01b600052601160045260246000fd5b8181038181111561205b5761205b612032565b92915050565b634e487b7160e01b600052603260045260246000fd5b601f82111561137557600081815260208120601f850160051c8101602086101561209e5750805b601f850160051c820191505b818110156120bd578281556001016120aa565b505050505050565b815167ffffffffffffffff8111156120df576120df611ad8565b6120f3816120ed8454611ff8565b84612077565b602080601f83116001811461212857600084156121105750858301515b600019600386901b1c1916600185901b1785556120bd565b600085815260208120601f198616915b8281101561215757888601518255948401946001909101908401612138565b50858210156121755787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b8381528260208201526060604082015260006121a46060830184611a38565b95945050505050565b6020808252602f908201527f4f6e6c792074686520706c6174666f726d206f776e65722063616e2063616c6c60408201526e103a3434b990333ab731ba34b7b71760891b606082015260800190565b8082018082111561205b5761205b612032565b60006001820161222157612221612032565b506001019056fea26469706673582212200937463326bacdf5d3f90698261bee0cbedf9d564792c4fe7fcc66d46023937a64736f6c63430008140033",
+  "devdoc": {
+    "details": "A smart contract that holds donations in escrow and releases funds to an NGO based on verifiable proof of milestone completion by a designated Oracle. Donors receive a conceptual \"Proof-of-Impact\" NFT (tracked by a simple counter).",
+    "kind": "dev",
+    "methods": {
+      "getAllMilestones(uint256)": {
+        "details": "Get all milestones for a campaign"
+      },
+      "getCampaignInfo(uint256)": {
+        "details": "Get campaign details (without milestones array which can't be returned directly)"
+      },
+      "getMilestone(uint256,uint256)": {
+        "details": "Get a specific milestone's details"
+      }
+    },
+    "title": "ProofOfImpact",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 4,
+        "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+        "label": "owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 7,
+        "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+        "label": "nextCampaignId",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 11,
+        "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+        "label": "isOracle",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 48,
+        "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+        "label": "campaigns",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_uint256,t_struct(Campaign)43_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_address_payable": {
+        "encoding": "inplace",
+        "label": "address payable",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_struct(Milestone)22_storage)dyn_storage": {
+        "base": "t_struct(Milestone)22_storage",
+        "encoding": "dynamic_array",
+        "label": "struct ProofOfImpact.Milestone[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_uint256,t_struct(Campaign)43_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct ProofOfImpact.Campaign)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Campaign)43_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Campaign)43_storage": {
+        "encoding": "inplace",
+        "label": "struct ProofOfImpact.Campaign",
+        "members": [
+          {
+            "astId": 24,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "ngoAddress",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address_payable"
+          },
+          {
+            "astId": 26,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "title",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 28,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "targetAmount",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 30,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "amountRaised",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 32,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "fundsReleased",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 36,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "milestones",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_array(t_struct(Milestone)22_storage)dyn_storage"
+          },
+          {
+            "astId": 38,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "nextMilestoneIndex",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 40,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "completed",
+            "offset": 0,
+            "slot": "7",
+            "type": "t_bool"
+          },
+          {
+            "astId": 42,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "impactNftCounter",
+            "offset": 0,
+            "slot": "8",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "288"
+      },
+      "t_struct(Milestone)22_storage": {
+        "encoding": "inplace",
+        "label": "struct ProofOfImpact.Milestone",
+        "members": [
+          {
+            "astId": 13,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "description",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 15,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "requiredAmount",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 17,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "isProofSubmitted",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool"
+          },
+          {
+            "astId": 19,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "isVerified",
+            "offset": 1,
+            "slot": "2",
+            "type": "t_bool"
+          },
+          {
+            "astId": 21,
+            "contract": "contracts/ProofOfImpact.sol:ProofOfImpact",
+            "label": "proofUri",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_string_storage"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

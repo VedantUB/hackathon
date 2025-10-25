@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { useScaffoldReadContract, useScaffoldWriteContract, useDeployedContractInfo } from "/hooks/scaffold-eth";
+import { useScaffoldReadContract, useScaffoldWriteContract, useDeployedContractInfo } from "~~/hooks/scaffold-eth";
 import { useAccount } from "wagmi";
 import { usePublicClient } from "wagmi";
 
@@ -101,15 +101,13 @@ export default function NGODashboard() {
   const { data: selectedCampaignInfo } = useScaffoldReadContract({
     contractName: "ProofOfImpact",
     functionName: "getCampaignInfo",
-    args: selectedCampaignId ? [selectedCampaignId] : undefined,
-    enabled: selectedCampaignId !== null,
+    args: [selectedCampaignId || 0n],
   });
 
   const { data: milestonesData } = useScaffoldReadContract({
     contractName: "ProofOfImpact",
     functionName: "getAllMilestones",
-    args: selectedCampaignId ? [selectedCampaignId] : undefined,
-    enabled: selectedCampaignId !== null,
+    args: [selectedCampaignId || 0n],
   });
 
   const { writeContractAsync: submitProof, isPending: isSubmitting } = useScaffoldWriteContract("ProofOfImpact");
