@@ -78,7 +78,7 @@ Visit your app on: `http://localhost:3000`
 
 ## 📝 How It Works
 
-1. **Admin creates a campaign** with NGO address, title, and milestones
+1. **Admin creates a campaign** with NGO address, Oracle address, title, and milestones
 2. **Donors contribute** ETH to the campaign (held in escrow)
 3. **NGO submits proof** of milestone completion (photos, receipts, etc.)
 4. **Oracle verifies** the proof and releases funds to NGO
