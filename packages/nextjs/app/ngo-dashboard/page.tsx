@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useScaffoldReadContract, useScaffoldWriteContract, useDeployedContractInfo } from "~~/hooks/scaffold-eth";
 import { useAccount } from "wagmi";
 import { usePublicClient } from "wagmi";
 
-export default function NGODashboard() {
+function NGODashboardContent() {
   const searchParams = useSearchParams();
   const campaignParam = searchParams.get("campaign");
   const { address } = useAccount();
@@ -373,3 +373,18 @@ export default function NGODashboard() {
   );
 }
 
+export default function NGODashboard() {
+  return (
+    <Suspense fallback={
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <h1 className="text-4xl font-bold mb-8">NGO Dashboard</h1>
+        <div className="flex flex-col justify-center items-center p-8 gap-4">
+          <span className="loading loading-spinner loading-lg"></span>
+          <span className="text-base-content/60">Loading dashboard...</span>
+        </div>
+      </div>
+    }>
+      <NGODashboardContent />
+    </Suspense>
+  );
+}

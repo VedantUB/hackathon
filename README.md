@@ -1,21 +1,37 @@
-# 🏗 Scaffold-ETH 2
+# Proof-of-Impact Donation Platform 🎯
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+A blockchain-based transparent donation platform where funds are released to NGOs only after verifiable proof of milestone completion. Built with Scaffold-ETH 2.
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+## 🌟 Features
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
+- **Milestone-Based Funding**: Donations are held in escrow and released only when milestones are verified
+- **Oracle Verification**: Designated oracles verify proof of work before releasing funds
+- **Transparent Tracking**: Real-time campaign progress and fund allocation
+- **Proof-of-Impact NFTs**: Donors receive NFTs as proof of their contribution
+- **Multi-Campaign Support**: Create and manage multiple NGO campaigns
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+## 🏗️ Architecture
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+### Smart Contract (`ProofOfImpact.sol`)
+
+The core smart contract manages:
+- Campaign creation with multiple milestones
+- Donation collection and escrow
+- Proof submission by NGOs
+- Oracle verification and fund release
+- Impact NFT minting for donors
+
+### Frontend (Next.js + Scaffold-ETH 2)
+
+- **Admin Panel**: Create campaigns and manage oracles
+- **Campaign Dashboard**: Browse and donate to active campaigns
+- **NGO Dashboard**: Submit proof of milestone completion
+- **Oracle Portal**: Verify proofs and release funds
+
+## 🔑 Deployed Contract (Sepolia)
+
+- **ProofOfImpact**: `0x4AD6c8B857840205E09c35a41bBf4AAb1F94d1f3`
+- **Chain ID**: 11155111 (Sepolia Testnet)
 
 ## Requirements
 
@@ -24,43 +40,100 @@ Before you begin, you need to install the following tools:
 - [Node (>= v20.18.3)](https://nodejs.org/en/download/)
 - Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
 - [Git](https://git-scm.com/downloads)
+- MetaMask or similar Web3 wallet
 
-## Quickstart
+## 🚀 Quick Start
 
-To get started with Scaffold-ETH 2, follow the steps below:
+### Local Development
 
-1. Install dependencies if it was skipped in CLI:
+1. **Clone and install dependencies**
 
-```
-cd my-dapp-example
+```bash
+git clone https://github.com/VedantUB/hackathon.git
+cd hackathon
 yarn install
 ```
 
-2. Run a local network in the first terminal:
+2. **Run a local blockchain** (Terminal 1)
 
-```
+```bash
 yarn chain
 ```
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/hardhat/hardhat.config.ts`.
+3. **Deploy the ProofOfImpact contract** (Terminal 2)
 
-3. On a second terminal, deploy the test contract:
-
-```
+```bash
 yarn deploy
 ```
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
+4. **Start the frontend** (Terminal 3)
 
-4. On a third terminal, start your NextJS app:
-
-```
+```bash
 yarn start
 ```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+Visit your app on: `http://localhost:3000`
 
-Run smart contract test with `yarn hardhat:test`
+## 📝 How It Works
+
+1. **Admin creates a campaign** with NGO address, title, and milestones
+2. **Donors contribute** ETH to the campaign (held in escrow)
+3. **NGO submits proof** of milestone completion (photos, receipts, etc.)
+4. **Oracle verifies** the proof and releases funds to NGO
+5. **Donors receive** Proof-of-Impact NFTs upon donation
+6. **Process repeats** for each milestone until campaign completion
+
+## 🚢 Deploy to Sepolia Testnet
+
+1. **Set up your deployer private key** in `packages/hardhat/.env`
+
+```bash
+DEPLOYER_PRIVATE_KEY=your_private_key_here
+```
+
+2. **Deploy the contract**
+
+```bash
+cd packages/hardhat
+yarn deploy --network sepolia
+```
+
+3. **Update frontend to use Sepolia** - Edit `packages/nextjs/scaffold.config.ts`:
+
+```typescript
+targetNetworks: [chains.sepolia]
+```
+
+## 🧪 Testing
+
+Run smart contract tests:
+
+```bash
+yarn hardhat:test
+```
+
+## 📦 Deploy Frontend to Vercel
+
+```bash
+cd packages/nextjs
+vercel
+```
+
+## 🛠️ Tech Stack
+
+- **Smart Contracts**: Solidity ^0.8.0
+- **Development**: Hardhat, TypeScript
+- **Frontend**: Next.js 15, React 19
+- **Web3**: Wagmi, Viem, RainbowKit
+- **UI**: TailwindCSS, DaisyUI
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+**Built with** [Scaffold-ETH 2](https://scaffoldeth.io) 🏗️
 
 - Edit your smart contracts in `packages/hardhat/contracts`
 - Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
