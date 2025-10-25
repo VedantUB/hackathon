@@ -2,6 +2,8 @@
 
 A blockchain-based transparent donation platform where funds are released to NGOs only after verifiable proof of milestone completion. Built with Scaffold-ETH 2.
 
+**🌐 Live Demo**: [https://poi-9szmmxp16-devanopers-projects.vercel.app/](https://poi-9szmmxp16-devanopers-projects.vercel.app/)
+
 ## 🌟 Features
 
 - **Milestone-Based Funding**: Donations are held in escrow and released only when milestones are verified
